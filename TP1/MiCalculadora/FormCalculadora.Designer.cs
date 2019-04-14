@@ -62,21 +62,20 @@
             "-",
             "*",
             "/"});
-            this.cmbOperador.Location = new System.Drawing.Point(173, 58);
+            this.cmbOperador.Location = new System.Drawing.Point(177, 58);
             this.cmbOperador.Name = "cmbOperador";
             this.cmbOperador.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmbOperador.Size = new System.Drawing.Size(100, 39);
-            this.cmbOperador.TabIndex = 1;
-            // 
+            this.cmbOperador.TabIndex = 1;            // 
             // txtNumero2
             // 
             this.txtNumero2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNumero2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumero2.Location = new System.Drawing.Point(311, 58);
+            this.txtNumero2.Location = new System.Drawing.Point(318, 59);
             this.txtNumero2.Multiline = true;
             this.txtNumero2.Name = "txtNumero2";
             this.txtNumero2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNumero2.Size = new System.Drawing.Size(125, 39);
+            this.txtNumero2.Size = new System.Drawing.Size(118, 39);
             this.txtNumero2.TabIndex = 2;
             this.txtNumero2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -118,7 +117,7 @@
             this.btnConvertirABinario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvertirABinario.Location = new System.Drawing.Point(12, 189);
             this.btnConvertirABinario.Name = "btnConvertirABinario";
-            this.btnConvertirABinario.Size = new System.Drawing.Size(210, 38);
+            this.btnConvertirABinario.Size = new System.Drawing.Size(209, 38);
             this.btnConvertirABinario.TabIndex = 6;
             this.btnConvertirABinario.Text = "Convertir a Binario";
             this.btnConvertirABinario.UseVisualStyleBackColor = true;
@@ -129,7 +128,7 @@
             this.btnConvertirADecimal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConvertirADecimal.Location = new System.Drawing.Point(228, 189);
             this.btnConvertirADecimal.Name = "btnConvertirADecimal";
-            this.btnConvertirADecimal.Size = new System.Drawing.Size(208, 38);
+            this.btnConvertirADecimal.Size = new System.Drawing.Size(209, 38);
             this.btnConvertirADecimal.TabIndex = 7;
             this.btnConvertirADecimal.Text = "Convertir a Decimal";
             this.btnConvertirADecimal.UseVisualStyleBackColor = true;

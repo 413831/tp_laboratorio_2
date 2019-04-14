@@ -10,12 +10,11 @@ namespace Entidades
     {
         private double numero;
 
-
-        public string SetNumero //Propiedad de solo escritura
+        public double SetNumero //Propiedad de solo escritura
         {
             set
             {   
-                numero = ValidarNumero(value);
+                numero = ValidarNumero(Convert.ToString(value));
             }
         }
 
@@ -23,12 +22,12 @@ namespace Entidades
         /// Valida que el string recibido por parametro sea un número válido
         /// </summary>
         /// <param name="strNumero"></param>
-        /// <returns></returns>
+        /// <returns>El número como double sino retorna 0</returns>
         public double ValidarNumero(string strNumero)
         {
             double numeroDouble;
 
-                if (Double.TryParse(strNumero,out numeroDouble))// Revisar validacion y conversión a INT
+                if (Double.TryParse(strNumero,out numeroDouble))
                 {
                     return numeroDouble;
                 }
@@ -38,14 +37,17 @@ namespace Entidades
                 }
         }
 
+        //CONSTRUCTORES
+
         /// <summary>
         /// Constructor que setea el atributo número con el valor recibido por párametro
         /// </summary>
         /// <param name="numero"></param>
         public Numero(double numero)
         {
-            this.SetNumero = Convert.ToString(numero);
+            this.SetNumero = numero;
         }
+
         public Numero(): this(0)
         {
         }
@@ -54,11 +56,13 @@ namespace Entidades
         {
         }
 
+        //MÉTODOS
+
         /// <summary>
         /// Recibe string por parámetro para descomponer y convertir en numero decimal
         /// </summary>
         /// <param name="binario"></param>
-        /// <returns>numero decimal en formato String</returns>
+        /// <returns>numero decimal en formato String si es posible convertir sino retorna mensaje de error</returns>
         public string BinarioDecimal(string binario)
         {
             char[] arrayBinario;
@@ -94,16 +98,21 @@ namespace Entidades
         /// Recibe string por parámetro para descomponer y convertir en numero binario
         /// </summary>
         /// <param name="numeroDecimal"></param>
-        /// <returns>resultado de la conversion en formato String sino retorna mensaje</returns>
+        /// <returns>resultado de la conversion en formato String si es posible convertir sino mensaje de error</returns>
         public string DecimalBinario(double numeroDecimal)
         {
             String resultado = "";
 
             if (numeroDecimal >= 0)
             {
-                while (numeroDecimal > 0)
+                while (numeroDecimal >= 0)
                 {
-                    if (numeroDecimal % 2 == 0) //Verifica el resto de la división
+                    if(numeroDecimal == 0)
+                    {
+                        resultado = "0" + resultado;
+                        break;
+                    }
+                    else if (numeroDecimal % 2 == 0) //Verifica el resto de la división
                     {
                         resultado = "0" + resultado;//Concatena el resto de la división
                     }
@@ -132,7 +141,8 @@ namespace Entidades
                 return "Valor invalido";
             }
         }
-        
+
+        //OPERADORES
 
         public static double operator -(Numero primerNumero, Numero segundoNumero)
         {
