@@ -45,6 +45,7 @@ namespace MiCalculadora
             Numero primerNumero;
             Numero segundoNumero;
             String operador = cmbOperador.Text;
+            flagConversion = 2;
 
             try
             {

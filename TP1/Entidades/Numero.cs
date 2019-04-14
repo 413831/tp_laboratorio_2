@@ -138,7 +138,7 @@ namespace Entidades
             }
             else
             {
-                return "Valor invalido";
+                return "Valor inválido.";
             }
         }
 
