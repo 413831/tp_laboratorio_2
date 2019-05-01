@@ -1,4 +1,4 @@
-# tp_laboratorio_2
+# TRABAJOS PRACTICOS LABORATORIO DE COMPUTACION 2
 
 <h1>TP 1 CALCULADORA</h1>
   CARPETA CON CLASES: tp_laboratorio_2/TP1/Entidades/</br>
