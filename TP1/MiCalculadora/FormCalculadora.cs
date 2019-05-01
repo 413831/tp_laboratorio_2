@@ -47,15 +47,14 @@ namespace MiCalculadora
             String operador = cmbOperador.Text;
             flagConversion = 2;
 
-            try
+            if(txtNumero1.Text != "" || txtNumero2.Text != "")
             {
                 primerNumero = new Numero(txtNumero1.Text);
                 segundoNumero = new Numero(txtNumero2.Text);
                 lblResultado.Text = Convert.ToString(Calculadora.Operar(primerNumero, segundoNumero, operador));
             }
-            catch(Exception exception)
+            else
             {
-                lblResultado.Text = exception.Message;
                 lblResultado.Text = "Valor inválido.";
             }
         }

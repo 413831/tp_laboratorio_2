@@ -10,7 +10,10 @@ namespace Entidades
     {
         private double numero;
 
-        public double SetNumero //Propiedad de solo escritura
+        /// <summary>
+        /// Propiedad de solo escritura
+        /// </summary>
+        public double SetNumero 
         {
             set
             {   
@@ -21,7 +24,7 @@ namespace Entidades
         /// <summary>
         /// Valida que el string recibido por parametro sea un número válido
         /// </summary>
-        /// <param name="strNumero"></param>
+        /// <param name="strNumero">Numero para validar</param>
         /// <returns>El número como double sino retorna 0</returns>
         public double ValidarNumero(string strNumero)
         {
@@ -42,7 +45,7 @@ namespace Entidades
         /// <summary>
         /// Constructor que setea el atributo número con el valor recibido por párametro
         /// </summary>
-        /// <param name="numero"></param>
+        /// <param name="numero">Valor para setear en atributo numero</param>
         public Numero(double numero)
         {
             this.SetNumero = numero;
@@ -61,7 +64,7 @@ namespace Entidades
         /// <summary>
         /// Recibe string por parámetro para descomponer y convertir en numero decimal
         /// </summary>
-        /// <param name="binario"></param>
+        /// <param name="binario">Numero binario para convertir</param>
         /// <returns>numero decimal en formato String si es posible convertir sino retorna mensaje de error</returns>
         public string BinarioDecimal(string binario)
         {
@@ -97,7 +100,7 @@ namespace Entidades
         /// <summary>
         /// Recibe string por parámetro para descomponer y convertir en numero binario
         /// </summary>
-        /// <param name="numeroDecimal"></param>
+        /// <param name="numeroDecimal">Numero decimal para convertir</param>
         /// <returns>resultado de la conversion en formato String si es posible convertir sino mensaje de error</returns>
         public string DecimalBinario(double numeroDecimal)
         {
@@ -144,21 +147,45 @@ namespace Entidades
 
         //OPERADORES
 
+        /// <summary>
+        /// Resta dos numeros
+        /// </summary>
+        /// <param name="primerNumero">Primer numero para operar</param>
+        /// <param name="segundoNumero">Segundo numero para operar</param>
+        /// <returns>Retorna el resultado de la operacion</returns>
         public static double operator -(Numero primerNumero, Numero segundoNumero)
         {
             return primerNumero.numero - segundoNumero.numero;
         }
 
+        /// <summary>
+        /// Suma dos numeros
+        /// </summary>
+        /// <param name="primerNumero">Primer numero para operar</param>
+        /// <param name="segundoNumero">Segundo numero para operar</param>
+        /// <returns>Retorna el resultado de la operacion</returns>
         public static double operator +(Numero primerNumero, Numero segundoNumero)
         {
             return primerNumero.numero + segundoNumero.numero;
         }
 
+        /// <summary>
+        /// Multiplica dos numeros
+        /// </summary>
+        /// <param name="primerNumero">Primer numero para operar</param>
+        /// <param name="segundoNumero">Segundo numero para operar</param>
+        /// <returns>Retorna el resultado de la operacion</returns>
         public static double operator *(Numero primerNumero, Numero segundoNumero)
         {
             return primerNumero.numero * segundoNumero.numero;
         }
 
+        /// <summary>
+        /// Divide dos numeros
+        /// </summary>
+        /// <param name="primerNumero">Primer numero para operar</param>
+        /// <param name="segundoNumero">Segundo numero para operar</param>
+        /// <returns>Retorna el resultado de la operacion si no retorna el mínimo valor de tipo Double</returns>
         public static double operator /(Numero primerNumero, Numero segundoNumero)
         {
             if(segundoNumero.numero == 0)
