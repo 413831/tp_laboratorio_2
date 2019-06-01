@@ -10,34 +10,53 @@ namespace Clases_Instanciables
 {
     public sealed class Profesor : Universitario
     {
-        private Queue<EClases> clasesDelDia;
-        private Random random;
+        private Queue<Universidad.EClases> clasesDelDia;
+        static Random random;
 
         #region Métodos
 
         static void _randomClases()
         {
-
+            random = random.Next(0, 3);
         }
 
         protected override string MostrarDatos()
         {
-            throw new NotImplementedException();
+            StringBuilder datos = new StringBuilder("");
+
+            datos.AppendLine(base.MostrarDatos());
+
+            foreach (Universidad.EClases clase in this.clasesDelDia)
+            {
+                datos.AppendLine(clase.ToString());
+            }
+            return datos.ToString();
         }
 
-        public static bool operator !=(Profesor profesor, EClases clase)
+        public static bool operator !=(Profesor profesor, Universidad.EClases clase)
         {
 
         }
 
-        public static bool operator ==(Profesor profesor, EClases clase)
+        public static bool operator ==(Profesor profesor, Universidad.EClases clase)
         {
 
         }
 
         protected override string ParticiparEnClase()
         {
-            throw new NotImplementedException();
+            StringBuilder clases = new StringBuilder("CLASES DEL DÍA ");
+
+            foreach(Universidad.EClases clase in clasesDelDia)
+            {
+                clases.Append(clase.ToString());
+            }
+            return clases.ToString();
+        }
+
+        static Profesor()
+        {
+            random = new Random();
         }
 
         public Profesor()
@@ -45,19 +64,17 @@ namespace Clases_Instanciables
 
         }
 
-        private Profesor()
-        {
-
-        }
-
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
+            : base(id,nombre,apellido,dni,nacionalidad)
         {
-
+            this.clasesDelDia = 
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder datos = new StringBuilder("");
+
+            datos.AppendLine(this.)
         }
 
 

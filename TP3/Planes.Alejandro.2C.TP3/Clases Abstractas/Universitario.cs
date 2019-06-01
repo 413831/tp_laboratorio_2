@@ -49,8 +49,9 @@ namespace Clases_Abstractas
         }
 
         public Universitario(int legajo, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
+            : base(nombre,apellido,dni,nacionalidad)
         {
-
+            this.legajo = legajo;
         }
 
         #endregion
