@@ -30,7 +30,10 @@ namespace Clases_Abstractas
             }
             set
             {
-                this.apellido = value;
+                if(this.ValidarNombreApellido(value) != "")
+                {
+                    this.apellido = value;
+                }
             }
         }
 
@@ -69,7 +72,10 @@ namespace Clases_Abstractas
             }
             set
             {
-                this.nombre = value;
+                if(this.ValidarNombreApellido(value) != "")
+                {
+                    this.nombre = value;
+                }
             }
         }
 
@@ -93,31 +99,37 @@ namespace Clases_Abstractas
 
         }
 
-        public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad)
+        public Persona(string nombre, string apellido, ENacionalidad nacionalidad) : this()
         {
-
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Nacionalidad = nacionalidad;
         }
 
         public Persona(string nombre, string apellido, int dni, ENacionalidad nacionalidad)
+            : this(nombre,apellido,nacionalidad)
         {
-
+            this.Dni = dni;
         }
 
         public Persona(string nombre, string apellido, string dni, ENacionalidad nacionalidad)
+            : this(nombre, apellido, nacionalidad)
         {
-
+            this.StringToDNI = dni;
         }
 
         public override string ToString()
         {
-            return base.ToString();
+            StringBuilder datos = new StringBuilder("");
+
+            datos.AppendLine(this.Nombre);
+            datos.AppendLine(this.Apellido);
+            datos.AppendLine(this.Dni.ToString());
+            datos.AppendLine(this.Nacionalidad.ToString());
+
+            return datos.ToString();
         }
         
-        /*
-         *  Se deberá validar que el DNI sea correcto, teniendo en cuenta su nacionalidad. Argentino entre 1 y
-        89999999 y Extranjero entre 90000000 y 99999999. Caso contrario, se lanzará la excepción
-        NacionalidadInvalidaException.
-         */
 
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
@@ -155,23 +167,26 @@ namespace Clases_Abstractas
             }
         }
 
-        private ValidarNombreApellido(string dato)
+        private string ValidarNombreApellido(string dato)
         {
-            string[] nombre;
-            string[] apellido;
+            string[] nombreApellido;
 
-            nombre = dato.Split(' ');
-            apellido = dato.Split(' ');
+            nombreApellido = dato.Split(' ');
 
-            for (i = 0; i < nombre.Length) ; if++)
-            {
-
+            for (int i = 0; i < nombreApellido.Length ; i++) // CONSULTAR REGEX
+            {   
+                for (int j = 0; j < nombreApellido[i].Length; j++) //
+                {
+                    if(!Char.IsLetter(nombreApellido[i][j]))
+                    {
+                        return "";
+                    }
+                }
             }
+            return dato;
         }
 
 
         #endregion
-
-
     }
 }

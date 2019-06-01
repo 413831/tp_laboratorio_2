@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clases_Abstractas
 {
-    public class Universitario : Persona
+    public abstract class Universitario : Persona
     {
         private int legajo;
 
@@ -17,25 +17,31 @@ namespace Clases_Abstractas
             return base.Equals(obj);
         }
 
-        protected abstract string MostrarDatos()
+        protected virtual string MostrarDatos()
         {
+            StringBuilder datos = new StringBuilder("");
 
+            datos.AppendLine(this.legajo.ToString());
+
+            return datos.ToString();
         }
 
         public static bool operator !=(Universitario universitarioUno, Universitario universitarioDos)
         {
-
+            return !(universitarioUno == universitarioDos);
         }
 
         public static bool operator ==(Universitario universitarioUno, Universitario universitarioDos)
         {
-
+            if(universitarioUno.legajo == universitarioDos.legajo && universitarioUno.Dni == universitarioDos.Dni &&
+               universitarioUno.GetType() == universitarioDos.GetType())
+            {
+                return true;
+            }
+            return false;
         }
-        
-        protected abstract string ParticiparEnClase()
-        {
 
-        }
+        protected abstract string ParticiparEnClase();
 
         public Universitario()
         {
