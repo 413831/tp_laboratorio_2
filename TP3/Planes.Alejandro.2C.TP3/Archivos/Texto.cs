@@ -11,12 +11,20 @@ namespace Archivos
     {
         public bool Guardar(string archivo, string datos)
         {
+            StreamWriter txtWriter = new StreamWriter(archivo,true);
 
+            txtWriter.Write(datos);
+            txtWriter.Close();
+            return true;
         }
 
         public bool Leer(string archivo, out string datos)
         {
+            StreamReader txtReader = new StreamReader(archivo);
 
+            datos = txtReader.ReadToEnd();
+            txtReader.Close();
+            return true;
         }
     }
 }

@@ -12,12 +12,22 @@ namespace Archivos
     {
         public bool Guardar(string archivo, T datos)
         {
+            XmlTextWriter textWriter = new XmlTextWriter(archivo, Encoding.UTF8);
+            XmlSerializer serializador = new XmlSerializer(typeof(T));
 
+            serializador.Serialize(textWriter, datos);
+            textWriter.Close();
+            return true;
         }
 
         public bool Leer(string archivo, out T datos)
         {
+            XmlTextReader textReader = new XmlTextReader(archivo);
+            XmlSerializer serializador = new XmlSerializer(typeof(T));
 
+            datos = (T)serializador.Deserialize(textReader);
+            textReader.Close();
+            return true;
         }
     }
 }
