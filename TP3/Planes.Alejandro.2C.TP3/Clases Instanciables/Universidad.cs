@@ -78,7 +78,9 @@ namespace Clases_Instanciables
 
         public Universidad()
         {
-
+            this.Alumnos = new List<Alumno>();
+            this.Instructores = new List<Profesor>();
+            this.Jornadas = new List<Jornada>();
         }
 
         public bool Guardar(Universidad universidad)
@@ -107,17 +109,17 @@ namespace Clases_Instanciables
         {
             StringBuilder datos = new StringBuilder("");
 
-            foreach(Profesor profesor in universidad.profesores)
+            foreach(Profesor profesor in universidad.Instructores)
             {
                 datos.AppendLine(profesor.ToString());
             }
 
-            foreach(Alumno alumno in universidad.alumnos)
+            foreach(Alumno alumno in universidad.Alumnos)
             {
                 datos.AppendLine(alumno.ToString());
             }
 
-            foreach(Jornada jornada in universidad.jornadas)
+            foreach(Jornada jornada in universidad.Jornadas)
             {
                 datos.AppendLine(jornada.ToString());
             }
@@ -136,7 +138,7 @@ namespace Clases_Instanciables
 
         public static Profesor operator !=(Universidad universidad, EClases clase)
         {
-            foreach(Profesor profesor in universidad.profesores)
+            foreach(Profesor profesor in universidad.Instructores)
             {
                 if(profesor != clase)
                 {
@@ -148,7 +150,7 @@ namespace Clases_Instanciables
 
         public static bool operator ==(Universidad universidad, Alumno alumno)
         {
-            foreach(Alumno auxiliarAlumno in universidad.alumnos)
+            foreach(Alumno auxiliarAlumno in universidad.Alumnos)
             {
                 if(auxiliarAlumno == alumno)
                 {
@@ -160,7 +162,7 @@ namespace Clases_Instanciables
 
         public static bool operator ==(Universidad universidad, Profesor profesor)
         {
-            foreach(Profesor auxiliarProfesor in universidad.profesores)
+            foreach(Profesor auxiliarProfesor in universidad.Instructores)
             {
                 if(auxiliarProfesor == profesor)
                 {
@@ -172,7 +174,7 @@ namespace Clases_Instanciables
 
         public static Profesor operator ==(Universidad universidad, EClases clase)
         {
-            foreach(Profesor profesor in universidad.profesores)
+            foreach(Profesor profesor in universidad.Instructores)
             {
                 if(profesor == clase)
                 {
@@ -187,20 +189,20 @@ namespace Clases_Instanciables
         {
             Jornada jornada;
 
-            foreach(Profesor profesor in universidad.profesores)
+            foreach(Profesor profesor in universidad.Instructores)
             {
                 if(profesor == clase) // Busco 1 profesor que tenga esa clase
                 {
                     jornada = new Jornada(clase,profesor); //Asigno el profesor a la jornada
 
-                    foreach(Alumno alumno in universidad.alumnos) // Busco todos los alumnos inscriptos en la clase
+                    foreach(Alumno alumno in universidad.Alumnos) // Busco todos los alumnos inscriptos en la clase
                     {
                         if(alumno == clase)
                         {
                             jornada += alumno;
                         }
                     }
-                    universidad.jornadas.Add(jornada);
+                    universidad.Jornadas.Add(jornada);
                     break;                  
                 }
             }
@@ -209,11 +211,11 @@ namespace Clases_Instanciables
 
         public static Universidad operator +(Universidad universidad, Alumno alumno)
         {
-            foreach(Alumno auxiliarAlumno in universidad.alumnos)
+            foreach(Alumno auxiliarAlumno in universidad.Alumnos)
             {
                 if(auxiliarAlumno != alumno)
                 {
-                    universidad.alumnos.Add(alumno);
+                    universidad.Alumnos.Add(alumno);
                 }
             }
             return universidad;
@@ -221,11 +223,11 @@ namespace Clases_Instanciables
 
         public static Universidad operator +(Universidad universidad, Profesor profesor)
         {
-            foreach(Profesor auxiliarProfesor in universidad.profesores)
+            foreach(Profesor auxiliarProfesor in universidad.Instructores)
             {
                 if(auxiliarProfesor != profesor)
                 {
-                    universidad.profesores.Add(profesor);
+                    universidad.Instructores.Add(profesor);
                 }
             }
             return universidad;
