@@ -23,13 +23,10 @@ namespace Clases_Instanciables
         protected override string MostrarDatos()
         {
             StringBuilder datos = new StringBuilder("");
+                                                         // Muestro apellido, nombre y nacionalidad
+            datos.AppendLine(base.MostrarDatos());      // Muestro el legajo
+            datos.AppendLine(this.ParticiparEnClase()); // Muestro las clases del día
 
-            datos.AppendLine(base.ToString());
-
-            foreach (Universidad.EClases clase in this.clasesDelDia)
-            {
-                datos.AppendLine(clase.ToString());
-            }
             return datos.ToString();
         }
 
@@ -51,9 +48,9 @@ namespace Clases_Instanciables
         {
             StringBuilder clases = new StringBuilder("CLASES DEL DÍA ");
 
-            foreach(Universidad.EClases clase in clasesDelDia)
+            foreach(Universidad.EClases clase in this.clasesDelDia)
             {
-                clases.Append(clase.ToString());
+                clases.Append("\n"+clase.ToString());
             }
             return clases.ToString();
         }

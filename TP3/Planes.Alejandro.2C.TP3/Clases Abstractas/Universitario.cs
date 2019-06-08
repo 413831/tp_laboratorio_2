@@ -21,6 +21,7 @@ namespace EntidadesAbstractas
         {
             StringBuilder datos = new StringBuilder("");
 
+            datos.AppendFormat(base.ToString());
             datos.AppendFormat("LEGAJO: {0}",this.legajo.ToString());
 
             return datos.ToString();

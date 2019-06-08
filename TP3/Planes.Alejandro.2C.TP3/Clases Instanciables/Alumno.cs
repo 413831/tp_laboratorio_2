@@ -20,6 +20,30 @@ namespace Clases_Instanciables
         private Universidad.EClases claseQueToma;
         private EEstadoCuenta estadoCuenta;
 
+        public Universidad.EClases ClaseQueToma
+        {
+            get
+            {
+                return this.claseQueToma;
+            }
+            set
+            {
+                this.claseQueToma = value;
+            }
+        }
+
+        public EEstadoCuenta EstadoCuenta
+        {
+            get
+            {
+                return this.estadoCuenta;
+            }
+            set
+            {
+                this.estadoCuenta = value;
+            }
+        }
+
         #region Métodos
 
         public Alumno()
@@ -28,29 +52,37 @@ namespace Clases_Instanciables
         public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, Universidad.EClases claseQueToma)
             : base(id,nombre,apellido,dni,nacionalidad)
         {
-            this.claseQueToma = claseQueToma;
+            this.ClaseQueToma = claseQueToma;
         }
 
         public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, Universidad.EClases claseQueToma, EEstadoCuenta estadoCuenta)
-            : base(id,nombre,apellido,dni,nacionalidad)
+            : this(id, nombre, apellido, dni, nacionalidad, claseQueToma)
         {
-            this.estadoCuenta = estadoCuenta;
+            this.EstadoCuenta = estadoCuenta;
         }
 
         protected override string MostrarDatos()
         {
             StringBuilder datos = new StringBuilder("");
+                                                       // Muestro apellido, nombre y nacionalidad
+            datos.AppendLine(base.MostrarDatos());  // Muestro legajo
 
-            datos.AppendLine(base.MostrarDatos());
-            datos.AppendLine(this.claseQueToma.ToString());
-            datos.AppendLine(this.estadoCuenta.ToString());
+            if(this.EstadoCuenta == 0)
+            {
+                datos.AppendFormat("ESTADO DE CUENTA: Cuenta al día"); // Muestro estado de cuenta
+            }
+            else
+            {
+                datos.AppendFormat("ESTADO DE CUENTA: {0}",this.EstadoCuenta.ToString()); // Muestro estado de cuenta
+            }
+            datos.AppendLine(this.ParticiparEnClase()); // Muestro clase que toma 
 
             return datos.ToString();
         }
 
         public static bool operator !=(Alumno alumno, Universidad.EClases clase)
         {
-            if (alumno.claseQueToma != clase)
+            if (alumno.ClaseQueToma != clase)
             {
                 return true;
             }
@@ -59,7 +91,7 @@ namespace Clases_Instanciables
 
         public static bool operator ==(Alumno alumno, Universidad.EClases clase)
         {
-            if(alumno.claseQueToma == clase && alumno.estadoCuenta != EEstadoCuenta.Deudor)
+            if(alumno.ClaseQueToma == clase && alumno.EstadoCuenta != EEstadoCuenta.Deudor)
             {
                 return true;
             }
@@ -68,9 +100,9 @@ namespace Clases_Instanciables
 
         protected override string ParticiparEnClase()
         {
-            StringBuilder clase = new StringBuilder("TOMA CLASE DE ");
+            StringBuilder clase = new StringBuilder("\nTOMA CLASES DE ");
 
-            clase.Append(this.claseQueToma.ToString());
+            clase.Append(this.ClaseQueToma.ToString());
 
             return clase.ToString();
         }
@@ -79,9 +111,8 @@ namespace Clases_Instanciables
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendLine(this.ParticiparEnClase());
-            datos.AppendFormat("ESTADO DE CUENTA: {0}",this.estadoCuenta.ToString());
-        
+            datos.AppendLine(this.MostrarDatos());
+
             return datos.ToString();
         }
 

@@ -59,12 +59,11 @@ namespace Clases_Instanciables
 
         public static bool Guardar(Jornada jornada)
         {
-            StreamWriter archivo = new StreamWriter("Jornada.txt");
+            Texto archivo = new Texto();
 
             try
             {
-                archivo.Write(jornada.ToString());
-                archivo.Close();
+                archivo.Guardar("Jornada.txt",jornada.ToString());
                 return true;
             }
             catch(NullReferenceException exception)
@@ -75,7 +74,16 @@ namespace Clases_Instanciables
             {
                 throw new ArchivosException(e);
             }
+        }
 
+        public string Leer()
+        {
+            Texto archivo = new Texto();
+            String datosArchivo;
+
+            archivo.Leer("Jornada.txt", out datosArchivo);
+
+            return datosArchivo;
         }
 
         private Jornada()
@@ -90,15 +98,6 @@ namespace Clases_Instanciables
             this.instructor = instructor;
         }
 
-        public string Leer()
-        {
-            StreamReader archivo = new StreamReader("Jornada.txt");
-            String datosJornada = archivo.ReadToEnd();
-
-            archivo.Close();
-
-            return datosJornada;
-        }
 
         public static bool operator !=(Jornada jornada, Alumno alumno)
         {
@@ -131,14 +130,20 @@ namespace Clases_Instanciables
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendFormat("CLASE: {0}",this.clase.ToString());
-            datos.AppendFormat("PROFESOR: {0}",this.instructor.ToString());
+            datos.AppendFormat("CLASE DE {0} ",this.clase.ToString());
+            datos.AppendFormat("POR {0}",this.instructor.ToString());
 
             foreach(Alumno alumno in this.alumnos)
             {
                 datos.AppendFormat("\nALUMNO: {0}",alumno.ToString());
             }
             return datos.ToString();
+        }
+
+        
+        public bool Leer(string archivo, out Jornada datos)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

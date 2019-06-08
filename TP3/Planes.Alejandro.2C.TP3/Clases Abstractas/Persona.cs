@@ -122,7 +122,7 @@ namespace EntidadesAbstractas
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendFormat("NOMBRE COMPLETO: {0} {1}\n",this.Nombre, this.Apellido);
+            datos.AppendFormat("NOMBRE COMPLETO: {0}, {1}\n",this.Apellido, this.Nombre);
             datos.AppendFormat("NACIONALIDAD: {0}\n", this.Nacionalidad.ToString());
 
             return datos.ToString();

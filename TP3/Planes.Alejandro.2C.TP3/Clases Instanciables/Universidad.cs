@@ -8,7 +8,8 @@ using Archivos;
 
 namespace Clases_Instanciables
 {
-    public class Universidad
+    [Serializable]
+    public class Universidad : Xml<Universidad>
     {
         public enum EClases
         {
@@ -116,19 +117,17 @@ namespace Clases_Instanciables
 
             foreach (Jornada jornada in universidad.Jornadas)
             {
-                datos.AppendFormat("JORNADA: {0}",jornada.ToString());
+                datos.AppendFormat("JORNADA: \n{0}",jornada.ToString());
+                datos.AppendLine("ALUMNOS: \n");
+                foreach(Alumno alumno in universidad.Alumnos)
+                {
+                    if (jornada == alumno)
+                    {
+                        datos.AppendFormat(alumno.ToString());
+                    }
+                }
+                datos.AppendFormat("<---------------------------------------->\n");
             }
-
-            foreach(Profesor profesor in universidad.Instructores)
-            {
-                datos.AppendLine(profesor.ToString());
-            }
-
-            foreach(Alumno alumno in universidad.Alumnos)
-            {
-                datos.AppendLine(alumno.ToString());
-            }
-
             return datos.ToString();        
         }
 
@@ -194,27 +193,26 @@ namespace Clases_Instanciables
         public static Universidad operator +(Universidad universidad, EClases clase)
         {
             Jornada jornada;
+            Profesor profesor;
 
-            foreach(Profesor profesor in universidad.Instructores)
+            profesor = universidad == clase;// Busco 1 profesor que tenga esa clase
+
+            if (!Object.Equals(profesor,null)) 
             {
-                if(profesor == clase) // Busco 1 profesor que tenga esa clase
-                {
-                    jornada = new Jornada(clase,profesor); //Asigno el profesor a la jornada
+                jornada = new Jornada(clase,profesor); //Asigno el profesor a la jornada
 
-                    foreach(Alumno alumno in universidad.Alumnos) // Busco todos los alumnos inscriptos en la clase
-                    {
-                        if(alumno == clase)
-                        {
-                            jornada += alumno;
-                        }
-                    }
-                    universidad.Jornadas.Add(jornada);
-                    break;                  
-                }
-                else
+                foreach(Alumno alumno in universidad.Alumnos) // Busco todos los alumnos inscriptos en la clase
                 {
-                    throw new SinProfesorException();
+                    if(alumno == clase)
+                    {
+                        jornada += alumno;
+                    }
                 }
+                universidad.Jornadas.Add(jornada);           
+            }
+            else
+            {
+                throw new SinProfesorException();
             }
             return universidad;
         }
