@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Clases_Abstractas;
+using EntidadesAbstractas;
 using Excepciones;
 
 namespace Clases_Instanciables
@@ -41,6 +41,7 @@ namespace Clases_Instanciables
         {
             StringBuilder datos = new StringBuilder("");
 
+            datos.AppendLine(base.MostrarDatos());
             datos.AppendLine(this.claseQueToma.ToString());
             datos.AppendLine(this.estadoCuenta.ToString());
 
@@ -76,7 +77,12 @@ namespace Clases_Instanciables
 
         public override string ToString()
         {
-            return this.MostrarDatos();
+            StringBuilder datos = new StringBuilder("");
+
+            datos.AppendLine(this.ParticiparEnClase());
+            datos.AppendFormat("ESTADO DE CUENTA: {0}",this.estadoCuenta.ToString());
+        
+            return datos.ToString();
         }
 
         #endregion

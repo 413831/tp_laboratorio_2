@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Excepciones;
 
-namespace Clases_Abstractas
+namespace EntidadesAbstractas
 {
     public class Persona
     {
@@ -122,10 +122,8 @@ namespace Clases_Abstractas
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendLine(this.Nombre);
-            datos.AppendLine(this.Apellido);
-            datos.AppendLine(this.Dni.ToString());
-            datos.AppendLine(this.Nacionalidad.ToString());
+            datos.AppendFormat("NOMBRE COMPLETO: {0} {1}\n",this.Nombre, this.Apellido);
+            datos.AppendFormat("NACIONALIDAD: {0}\n", this.Nacionalidad.ToString());
 
             return datos.ToString();
         }
@@ -141,11 +139,10 @@ namespace Clases_Abstractas
             {
                 return 1;
             }
-            else if (Convert.ToInt32(dato) > 99999999 || Convert.ToInt32(dato) <= 0)
+            else
             {
-                throw new NacionalidadInvalidadException("Nacionalidad inválida");
+                throw new NacionalidadInvalidaException("La nacionalidad no se condice con el número de DNI");
             }
-            return 0;
         }
 
         private int ValidadDni(ENacionalidad nacionalidad, string dato)

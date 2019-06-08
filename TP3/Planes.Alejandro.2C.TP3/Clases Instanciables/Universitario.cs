@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntidadesAbstractas
+namespace Clases_Abstractas
 {
     public abstract class Universitario : Persona
     {
@@ -17,11 +17,12 @@ namespace EntidadesAbstractas
             return base.Equals(obj);
         }
 
-        protected virtual string MostrarDatos()
+        protected virtual string MostrarDatos() // VERIFICAR MOSTRAR DE BASE
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendFormat("LEGAJO: {0}",this.legajo.ToString());
+            datos.AppendLine(base.MostrarDatos());
+            datos.AppendLine(this.legajo.ToString());
 
             return datos.ToString();
         }
@@ -33,8 +34,8 @@ namespace EntidadesAbstractas
 
         public static bool operator ==(Universitario universitarioUno, Universitario universitarioDos)
         {
-            if(universitarioUno.GetType() == universitarioDos.GetType() && universitarioUno.legajo == universitarioDos.legajo
-                || universitarioUno.Dni == universitarioDos.Dni)
+            if(universitarioUno.legajo == universitarioDos.legajo && universitarioUno.Dni == universitarioDos.Dni &&
+               universitarioUno.GetType() == universitarioDos.GetType())
             {
                 return true;
             }
@@ -45,7 +46,6 @@ namespace EntidadesAbstractas
 
         public Universitario()
         {
-
         }
 
         public Universitario(int legajo, string nombre, string apellido, string dni, ENacionalidad nacionalidad)
