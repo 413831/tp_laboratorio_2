@@ -17,7 +17,7 @@ namespace Clases_Instanciables
 
         static void _randomClases()
         {
-            random = random.Next(0, 3);
+            Universidad.EClases random.Next(0, 3)];
         }
 
         protected override string MostrarDatos()
