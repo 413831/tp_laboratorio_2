@@ -9,7 +9,7 @@ using Archivos;
 namespace Clases_Instanciables
 {
     [Serializable]
-    public class Universidad : Xml<Universidad>
+    public class Universidad
     {
         public enum EClases
         {
@@ -91,9 +91,9 @@ namespace Clases_Instanciables
 
         public static bool Guardar(Universidad universidad)
         {
-            Xml<string> exportarXml = new Xml<string>();
+            Xml<Universidad> exportarXml = new Xml<Universidad>();
 
-            if(exportarXml.Guardar("Universidad.xml", universidad.ToString()))
+            if(exportarXml.Guardar("Universidad.xml", universidad))
             {
                 return true;
             }

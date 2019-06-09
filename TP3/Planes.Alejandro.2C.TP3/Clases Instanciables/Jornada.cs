@@ -140,12 +140,6 @@ namespace Clases_Instanciables
             return datos.ToString();
         }
 
-        
-        public bool Leer(string archivo, out Jornada datos)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
     }
