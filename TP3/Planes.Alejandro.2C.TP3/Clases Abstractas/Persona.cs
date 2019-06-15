@@ -234,9 +234,9 @@ namespace EntidadesAbstractas
 
             nombreApellido = dato.Split(' ');
 
-            for (int i = 0; i < nombreApellido.Length ; i++) // CONSULTAR REGEX
+            for (int i = 0; i < nombreApellido.Length ; i++) 
             {   
-                for (int j = 0; j < nombreApellido[i].Length; j++) //
+                for (int j = 0; j < nombreApellido[i].Length; j++) 
                 {
                     if(!Char.IsLetter(nombreApellido[i][j]))
                     {

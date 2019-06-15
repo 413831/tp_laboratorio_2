@@ -29,5 +29,47 @@ namespace TestUnitarios
             universidad += alumnoDos;
             //Assert
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(DniInvalidoException))]
+        public void TestDniInvalidoException()
+        {
+            //Arrange
+            Alumno alumno;
+
+            //Act
+            alumno = new Alumno(1, "Nachito", "Gómez", "91119999",
+                                Persona.ENacionalidad.Argentino,
+                                Universidad.EClases.Legislacion,
+                                Alumno.EEstadoCuenta.AlDia);
+            //Assert
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DniInvalidoException))]
+        public void TestNumeroDni()
+        {
+            //Arrange
+            Profesor profesor;
+
+            //Act
+            profesor = new Profesor(1,"Patricio","Giménez","0",Persona.ENacionalidad.Extranjero);
+
+            //Assert
+            Assert.AreNotEqual(0, profesor.Dni);
+        }
+
+        [TestMethod]
+        public void TestListadoAlumnosNulo()
+        {
+            //Arrange
+            Universidad universidad;
+
+            //Act
+            universidad = new Universidad();
+
+            //Assert
+            Assert.IsNotNull(universidad.Alumnos);
+        }
     }
 }
