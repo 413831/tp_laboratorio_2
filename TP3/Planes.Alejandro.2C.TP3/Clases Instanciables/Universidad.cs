@@ -11,6 +11,9 @@ namespace Clases_Instanciables
     [Serializable]
     public class Universidad
     {
+        /// <summary>
+        /// Enumerado de clases
+        /// </summary>
         public enum EClases
         {
             Programacion,
@@ -25,6 +28,9 @@ namespace Clases_Instanciables
 
         #region Propiedades
 
+        /// <summary>
+        /// Propiedad para listado de alumnos
+        /// </summary>
         public List<Alumno> Alumnos
         {
             get
@@ -33,11 +39,13 @@ namespace Clases_Instanciables
             }
             set
             {
-
                 this.alumnos = value;
             }
         }
 
+        /// <summary>
+        /// Propiedad para listado de instructores
+        /// </summary>        
         public List<Profesor> Instructores
         {
             get
@@ -50,6 +58,9 @@ namespace Clases_Instanciables
             }
         }
 
+        /// <summary>
+        /// Propiedad para listado de jornadas
+        /// </summary>
         public List<Jornada> Jornadas
         {
             get
@@ -62,6 +73,11 @@ namespace Clases_Instanciables
             }
         }
 
+        /// <summary>
+        /// Propiedad para retornar una jornada de la universidad
+        /// </summary>
+        /// <param name="i">Indexador</param>
+        /// <returns>Retorna la jornadad del índice indicado sino retorna null</returns>
         public Jornada this[int i]
         {
             get
@@ -82,6 +98,9 @@ namespace Clases_Instanciables
 
         #region Métodos
 
+        /// <summary>
+        /// Constructor público que inicializa los listados
+        /// </summary>
         public Universidad()
         {
             this.Alumnos = new List<Alumno>();
@@ -89,6 +108,11 @@ namespace Clases_Instanciables
             this.Jornadas = new List<Jornada>();
         }
 
+        /// <summary>
+        /// Método estático para guardar los datos de una universidad en un archivo XML
+        /// </summary>
+        /// <param name="universidad">Objeto para guardar los datos</param>
+        /// <returns>Retorna true si logra guardar sino retorna false</returns>
         public static bool Guardar(Universidad universidad)
         {
             Xml<Universidad> exportarXml = new Xml<Universidad>();
@@ -100,6 +124,12 @@ namespace Clases_Instanciables
             return false;
         }
 
+        /// <summary>
+        /// Método estático para leer los datos de un archivo XML
+        /// </summary>
+        /// <param name="archivo">Nombre del archivo para leer los datos</param>
+        /// <param name="datos">Objeto para guardar los datos leídos</param>
+        /// <returns>Retorna true si logra leer los datos sino retorna false</returns>
         public static bool Leer(string archivo, out Universidad datos)
         {
             Xml<Universidad> importarXml = new Xml<Universidad>();
@@ -111,6 +141,11 @@ namespace Clases_Instanciables
             return false;
         }
 
+        /// <summary>
+        /// Método privado estático que retorna todos los datos de una Universidad en un string
+        /// </summary>
+        /// <param name="universidad">Objeto del que se retornarán los datos</param>
+        /// <returns>Retorna un string con todos los datos</returns>
         private static string MostrarDatos(Universidad universidad)
         {
             StringBuilder datos = new StringBuilder("");
@@ -130,6 +165,16 @@ namespace Clases_Instanciables
             }
             return datos.ToString();        
         }
+
+        /// <summary>
+        /// Sobrecarga de método ToString() que retorna los datos del objeto actual en un string
+        /// </summary>
+        /// <returns>Retorna los datos de la instancia en un string</returns>
+        public override string ToString()
+        {
+            return Universidad.MostrarDatos(this);
+        }
+
 
         public static bool operator !=(Universidad universidad, Alumno alumno)
         {
@@ -239,10 +284,6 @@ namespace Clases_Instanciables
             return universidad;
         }
 
-        public override string ToString()
-        {
-            return Universidad.MostrarDatos(this);
-        }
 
         #endregion
     }

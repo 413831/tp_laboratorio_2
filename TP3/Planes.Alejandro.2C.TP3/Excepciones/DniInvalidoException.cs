@@ -8,28 +8,24 @@ namespace Excepciones
 {
     public class DniInvalidoException : Exception
     {
-        private string mensajeBase;
-
         #region Métodos
 
-        public DniInvalidoException()
+        /// <summary>
+        /// Excepciones para validación del formato del DNI
+        /// </summary>
+        public DniInvalidoException() : this("DNI inválido")
         {
-
         }
 
-        public DniInvalidoException(Exception e)
-        {
+        public DniInvalidoException(Exception exception) :this("DNI inválido",exception)
+        {}
 
+        public DniInvalidoException(string message) :this(message,null)
+        {
         }
 
-        public DniInvalidoException(string message)
+        public DniInvalidoException(string message, Exception exception) : base(message, exception)
         {
-
-        }
-
-        public DniInvalidoException(string message, Exception e)
-        {
-
         }
 
         #endregion

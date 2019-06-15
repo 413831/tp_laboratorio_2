@@ -17,6 +17,9 @@ namespace Clases_Instanciables
 
         #region Propiedades
 
+        /// <summary>
+        /// Propiedad para el atributo alumnos
+        /// </summary>
         public List<Alumno> Alumnos
         {
             get
@@ -29,6 +32,9 @@ namespace Clases_Instanciables
             }
         }
 
+        /// <summary>
+        /// Propiedad para atributo clase
+        /// </summary>
         public Universidad.EClases Clase
         {
             get
@@ -41,6 +47,9 @@ namespace Clases_Instanciables
             }
         }
 
+        /// <summary>
+        /// Propiedad para atributo instructor
+        /// </summary>
         public Profesor Instructor
         {
             get
@@ -57,6 +66,31 @@ namespace Clases_Instanciables
 
         #region Métodos
 
+        /// <summary>
+        /// Constructor privado que setea la lista de alumnos
+        /// </summary>
+        private Jornada()
+        {
+            this.alumnos = new List<Alumno>();
+        }
+
+        /// <summary>
+        /// Constructor público que setea los atributos clase e instructor
+        /// </summary>
+        /// <param name="clase">Valor para el atributo clase</param>
+        /// <param name="instructor">Valor para el atributo instructor</param>
+        public Jornada(Universidad.EClases clase, Profesor instructor)
+        : this()
+        {
+            this.clase = clase;
+            this.instructor = instructor;
+        }
+
+        /// <summary>
+        /// Método para guardar una Jornada en un archivo de texto
+        /// </summary>
+        /// <param name="jornada">Objeto para guardar en un archivo</param>
+        /// <returns>Retorna true si logra guardar sino retorna false</returns>
         public static bool Guardar(Jornada jornada)
         {
             Texto archivo = new Texto();
@@ -66,66 +100,52 @@ namespace Clases_Instanciables
                 archivo.Guardar("Jornada.txt",jornada.ToString());
                 return true;
             }
-            catch(NullReferenceException exception)
+            catch (ArchivosException exception)
             {
+                return false;
+                throw exception;
+            }
+            catch (NullReferenceException exception)
+            {
+                return false;
                 throw new ArchivosException(exception);
             }
             catch(ArgumentException e)
             {
+                return false;
                 throw new ArchivosException(e);
+            }
+            catch(Exception exception)
+            {
+                return false;
+                throw new ArchivosException(exception);
             }
         }
 
+        /// <summary>
+        /// Método para leer datos de una Jornada de un archivo de texto
+        /// </summary>
+        /// <returns>Retorna los datos en un string</returns>
         public string Leer()
         {
             Texto archivo = new Texto();
             String datosArchivo;
 
-            archivo.Leer("Jornada.txt", out datosArchivo);
-
-            return datosArchivo;
-        }
-
-        private Jornada()
-        {
-            this.alumnos = new List<Alumno>();
-        }
-
-        public Jornada(Universidad.EClases clase, Profesor instructor)
-        : this()
-        {
-            this.clase = clase;
-            this.instructor = instructor;
-        }
-
-
-        public static bool operator !=(Jornada jornada, Alumno alumno)
-        {
-            return !(jornada == alumno);
-        }
-
-        public static bool operator ==(Jornada jornada, Alumno alumno)
-        {
-            if(alumno == jornada.clase)
+            try
             {
-                return true;
+                archivo.Leer("Jornada.txt", out datosArchivo);
+                return datosArchivo;
             }
-            return false;
-        }
-
-        public static Jornada operator +(Jornada jornada, Alumno alumno)
-        {
-            //Sobrecarga de == en clase base Universitario
-            foreach(Alumno auxiliarAlumno in jornada.alumnos)
+            catch (ArchivosException exception)
             {
-                if(auxiliarAlumno != alumno)
-                {
-                    jornada.alumnos.Add(alumno);
-                }
+                throw exception;
             }
-            return jornada;
         }
 
+        /// <summary>
+        /// Sobrecarga de método ToString() que retorna todos los datos de una Jornada en un string
+        /// </summary>
+        /// <returns>Retorna un string con todos los datos</returns>
         public override string ToString()
         {
             StringBuilder datos = new StringBuilder("");
@@ -142,5 +162,53 @@ namespace Clases_Instanciables
 
         #endregion
 
+        #region Operadores
+
+        /// <summary>
+        /// Sobrecarga de operador de distinto entre jornada y alumno
+        /// </summary>
+        /// <param name="jornada">Jornada para comparar</param>
+        /// <param name="alumno">Alumno para comparar</param>
+        /// <returns>Retorna true si el alumno no coincide con la clase de la jornada sino retorna false</returns>
+        public static bool operator !=(Jornada jornada, Alumno alumno)
+        {
+            return !(jornada == alumno);
+        }
+
+        /// <summary>
+        /// Sobrecarga de operador de igualdad entre jornada y alumno
+        /// </summary>
+        /// <param name="jornada">Jornada para comparar</param>
+        /// <param name="alumno">Alumno para comparar</param>
+        /// <returns>Retorna true si el alumno coincide con la clase sino retorna false</returns>
+        public static bool operator ==(Jornada jornada, Alumno alumno)
+        {
+            if(alumno == jornada.clase)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Sobrecarga del operador de suma para agregar un alumno a la jornada
+        /// </summary>
+        /// <param name="jornada">Jornada para agregar alumno</param>
+        /// <param name="alumno">Alumno para agregar</param>
+        /// <returns>Retorna el objeto jornada con el alumno agregado de no estar en el listado de alumnos</returns>
+        public static Jornada operator +(Jornada jornada, Alumno alumno)
+        {
+            //Sobrecarga de == en clase base Universitario
+            foreach(Alumno auxiliarAlumno in jornada.alumnos)
+            {
+                if(auxiliarAlumno != alumno)
+                {
+                    jornada.alumnos.Add(alumno);
+                }
+            }
+            return jornada;
+        }
+
+        #endregion
     }
 }
