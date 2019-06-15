@@ -175,17 +175,38 @@ namespace Clases_Instanciables
             return Universidad.MostrarDatos(this);
         }
 
+        #endregion
 
+        #region Operadores
+
+        /// <summary>
+        /// Sobrecarga de operador distinto entre universidad y alumno
+        /// </summary>
+        /// <param name="universidad">Universidad para comparar</param>
+        /// <param name="alumno">Alumno para comparar</param>
+        /// <returns>Retorna true si la universidad no tiene inscripto al alumno sino retorna false</returns>
         public static bool operator !=(Universidad universidad, Alumno alumno)
         {
             return !(universidad == alumno);
         }
 
+        /// <summary>
+        /// Sobrecarga de operador distinto entre universidad y profesor
+        /// </summary>
+        /// <param name="universidad">Universidad para comparar</param>
+        /// <param name="alumno">Profesor para comparar</param>
+        /// <returns>Retorna true si la universidad no tiene asignado al profesor sino retorna false</returns>
         public static bool operator !=(Universidad universidad, Profesor profesor)
         {
             return !(universidad == profesor);
         }
 
+        /// <summary>
+        /// Sobrecarga de operador de distinto entre universidad y clase
+        /// </summary>
+        /// <param name="universidad">Universidad para comparar</param>
+        /// <param name="clase">Clase para comparar</param>
+        /// <returns>Retorna un profesor que no coincida con la clase sino lanza una excepcion de tipo SinProfesorException</returns>
         public static Profesor operator !=(Universidad universidad, EClases clase)
         {
             foreach(Profesor profesor in universidad.Instructores)
@@ -198,6 +219,12 @@ namespace Clases_Instanciables
             throw new SinProfesorException();
         }
 
+        /// <summary>
+        /// Sobrecarga de operador de igualdad entre universidad y alumno
+        /// </summary>
+        /// <param name="universidad">Universidad para comparar</param>
+        /// <param name="alumno">Alumno para comparar</param>
+        /// <returns>Retorna true si la universidad tiene inscripto al alumno sino retorna false</returns>
         public static bool operator ==(Universidad universidad, Alumno alumno)
         {
             foreach(Alumno auxiliarAlumno in universidad.Alumnos)
@@ -210,6 +237,12 @@ namespace Clases_Instanciables
             return false;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador de igualdad entre universidad y profesor
+        /// </summary>
+        /// <param name="universidad">Universidad para comparar</param>
+        /// <param name="alumno">Profesor para comparar</param>
+        /// <returns>Retorna true si la universidad tiene asignado al profesor sino retorna false</returns>
         public static bool operator ==(Universidad universidad, Profesor profesor)
         {
             foreach(Profesor auxiliarProfesor in universidad.Instructores)
@@ -222,6 +255,12 @@ namespace Clases_Instanciables
             return false;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador de igualdad entre universidad y clase
+        /// </summary>
+        /// <param name="universidad">Universidad para comparar</param>
+        /// <param name="clase">Clase para comparar</param>
+        /// <returns>Retorna un profesor que coincida con la clase sino lanza una excepcion de tipo SinProfesorException</returns>
         public static Profesor operator ==(Universidad universidad, EClases clase)
         {
             foreach(Profesor profesor in universidad.Instructores)
@@ -234,34 +273,52 @@ namespace Clases_Instanciables
             throw new SinProfesorException();
         }
 
-
+        /// <summary>
+        /// Sobrecarga de operador suma entre Universidad y Clase
+        /// </summary>
+        /// <param name="universidad">Universidad para agregar clase</param>
+        /// <param name="clase">Clase para agregar en universidad</param>
+        /// <returns></returns>
         public static Universidad operator +(Universidad universidad, EClases clase)
         {
             Jornada jornada;
             Profesor profesor;
 
-            profesor = universidad == clase;// Busco 1 profesor que tenga esa clase
-
-            if (!Object.Equals(profesor,null)) 
+            try
             {
-                jornada = new Jornada(clase,profesor); //Asigno el profesor a la jornada
+                profesor = universidad == clase;// Busco 1 profesor que tenga esa clase en su listado
 
-                foreach(Alumno alumno in universidad.Alumnos) // Busco todos los alumnos inscriptos en la clase
+                if (!Object.Equals(profesor,null)) 
                 {
-                    if(alumno == clase)
+                    jornada = new Jornada(clase,profesor); //Asigno el profesor a la jornada
+
+                    foreach(Alumno alumno in universidad.Alumnos) // Busco todos los alumnos inscriptos en la clase
                     {
-                        jornada += alumno;
+                        if(alumno == clase) 
+                        {
+                            jornada += alumno; // Agrego a cada alumno que tenga esa clase asignada
+                        }
                     }
+                    universidad.Jornadas.Add(jornada); // Agrego la nueva jornada al listado de la Universidad
                 }
-                universidad.Jornadas.Add(jornada);           
+                else
+                {
+                    throw new SinProfesorException();
+                }
+                return universidad;
             }
-            else
+            catch(SinProfesorException exception)
             {
-                throw new SinProfesorException();
+                throw exception;
             }
-            return universidad;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador suma entre universidad y alumno
+        /// </summary>
+        /// <param name="universidad">Universidad para agregar alumno</param>
+        /// <param name="alumno">Alumno para agregar en universidad</param>
+        /// <returns>Retorna la universidad con el alumno agregado</returns>
         public static Universidad operator +(Universidad universidad, Alumno alumno)
         {
             if(universidad != alumno)
@@ -275,6 +332,12 @@ namespace Clases_Instanciables
             return universidad;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador suma entre universidad y profesor
+        /// </summary>
+        /// <param name="universidad">Universidad para agregar profesor</param>
+        /// <param name="profesor">Profesor para agregar en universidad</param>
+        /// <returns>Retorna la universidad con el profesor agregado</returns>
         public static Universidad operator +(Universidad universidad, Profesor profesor)
         {
             if(universidad != profesor)
@@ -283,7 +346,6 @@ namespace Clases_Instanciables
             }
             return universidad;
         }
-
 
         #endregion
     }
