@@ -82,15 +82,22 @@ namespace Clases_Instanciables
         {
             get
             {
-                if(i < this.jornadas.Count)
+                if(i >= 0 && i < this.Jornadas.Count)
                 {
-                    return this.jornadas[i];
+                    return this.Jornadas[i];
                 }
                 return null;
             }
             set
             {
-                this.jornadas[i] = value;
+                if (i >= 0 && i < this.Jornadas.Count)
+                {
+                    this.Jornadas[i] = value;
+                }
+                else if(i == this.Jornadas.Count)
+                {
+                    this.Jornadas.Add(value);
+                }
             }
         }
 
@@ -153,14 +160,7 @@ namespace Clases_Instanciables
             foreach (Jornada jornada in universidad.Jornadas)
             {
                 datos.AppendFormat("JORNADA: \n{0}",jornada.ToString());
-                datos.AppendLine("ALUMNOS: \n");
-                foreach(Alumno alumno in universidad.Alumnos)
-                {
-                    if (jornada == alumno)
-                    {
-                        datos.AppendFormat(alumno.ToString());
-                    }
-                }
+
                 datos.AppendFormat("<---------------------------------------->\n");
             }
             return datos.ToString();        

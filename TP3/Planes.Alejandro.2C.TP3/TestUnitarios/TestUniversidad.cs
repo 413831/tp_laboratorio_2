@@ -31,7 +31,7 @@ namespace TestUnitarios
         }
 
         [TestMethod]
-        [ExpectedException(typeof(DniInvalidoException))]
+        [ExpectedException(typeof(NacionalidadInvalidaException))]
         public void TestDniInvalidoException()
         {
             //Arrange

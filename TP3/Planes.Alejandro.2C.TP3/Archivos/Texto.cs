@@ -18,17 +18,17 @@ namespace Archivos
         /// <returns>Retorna true si logra guardar sino retorna false</returns>
         public bool Guardar(string archivo, string datos)
         {
-            StreamWriter txtWriter = new StreamWriter(archivo,true);
+            StreamWriter txtWriter = new StreamWriter(archivo,false);
 
             try
             {
-                txtWriter = new StreamWriter(archivo, true);
-                txtWriter.Write(datos);
+                txtWriter.WriteLine(datos);
                 return true;
 
             }
             catch(NotSupportedException exception)
             {
+                return false;
                 throw new ArchivosException(exception);
             }
             catch (IOException exception)
@@ -50,7 +50,7 @@ namespace Archivos
         /// <returns>Retorna true si logra leer los datos sino retorna false</returns>
         public bool Leer(string archivo, out string datos)
         {
-            StreamReader txtReader = new StreamReader(archivo);
+            StreamReader txtReader = new StreamReader(archivo, Encoding.UTF8);
 
             try
             {

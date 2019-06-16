@@ -105,14 +105,17 @@ namespace Clases_Instanciables
             StringBuilder datos = new StringBuilder("");
                                                       
             datos.AppendLine(base.MostrarDatos());  // Muestro apellido, nombre,nacionalidad y legajo
+            datos.AppendLine();
 
             if (this.EstadoCuenta == 0)
             {
                 datos.AppendFormat("ESTADO DE CUENTA: Cuenta al día"); // Muestro estado de cuenta
+                datos.AppendLine();
             }
             else
             {
                 datos.AppendFormat("ESTADO DE CUENTA: {0}",this.EstadoCuenta.ToString()); // Muestro estado de cuenta
+                datos.AppendLine();
             }
             datos.AppendLine(this.ParticiparEnClase()); // Muestro clase que toma 
 

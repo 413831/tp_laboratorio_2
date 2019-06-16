@@ -9,10 +9,10 @@ using System.IO;
 
 namespace Clases_Instanciables
 {
-    public class Jornada //REVISAR TODA LA CLASE
+    public class Jornada 
     {
         private List<Alumno> alumnos;
-        private Universidad.EClases clase; // CONSULTAR ENUMERADO ECLASES
+        private Universidad.EClases clase; 
         private Profesor instructor;
 
         #region Propiedades
@@ -150,12 +150,13 @@ namespace Clases_Instanciables
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendFormat("CLASE DE {0} ",this.clase.ToString());
+            datos.AppendFormat("CLASE DE {0} ",this.Clase);
             datos.AppendFormat("POR {0}",this.instructor.ToString());
+            datos.AppendLine("ALUMNOS:");
 
-            foreach(Alumno alumno in this.alumnos)
+            foreach(Alumno alumno in this.Alumnos)
             {
-                datos.AppendFormat("\nALUMNO: {0}",alumno.ToString());
+                datos.AppendLine(alumno.ToString());
             }
             return datos.ToString();
         }
@@ -183,9 +184,12 @@ namespace Clases_Instanciables
         /// <returns>Retorna true si el alumno coincide con la clase sino retorna false</returns>
         public static bool operator ==(Jornada jornada, Alumno alumno)
         {
-            if(alumno == jornada.clase)
+            foreach(Alumno auxiliarAlumno in jornada.Alumnos)
             {
-                return true;
+                if(auxiliarAlumno == alumno)
+                {
+                    return true;
+                }
             }
             return false;
         }
@@ -198,13 +202,9 @@ namespace Clases_Instanciables
         /// <returns>Retorna el objeto jornada con el alumno agregado de no estar en el listado de alumnos</returns>
         public static Jornada operator +(Jornada jornada, Alumno alumno)
         {
-            //Sobrecarga de == en clase base Universitario
-            foreach(Alumno auxiliarAlumno in jornada.alumnos)
+            if(jornada != alumno)
             {
-                if(auxiliarAlumno != alumno)
-                {
-                    jornada.alumnos.Add(alumno);
-                }
+               jornada.alumnos.Add(alumno);
             }
             return jornada;
         }

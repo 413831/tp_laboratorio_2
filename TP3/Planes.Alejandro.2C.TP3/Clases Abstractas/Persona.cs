@@ -58,10 +58,7 @@ namespace EntidadesAbstractas
             }
             set
             {
-                if (this.ValidadDni(this.nacionalidad, value.ToString()) == 1)
-                {
-                    this.dni = value;
-                }
+                 this.dni = this.ValidarDni(this.Nacionalidad,value);
             }
         }
 
@@ -91,10 +88,7 @@ namespace EntidadesAbstractas
             }
             set
             {
-                if(this.ValidarNombreApellido(value) != "")
-                {
-                    this.nombre = value;
-                }
+                  this.nombre = this.ValidarNombreApellido(value);
             }
         }
 
@@ -105,10 +99,7 @@ namespace EntidadesAbstractas
         {
             set
             {
-                if(this.ValidadDni(this.nacionalidad,value) == 1)
-                {
-                    this.dni = Convert.ToInt32(value);
-                }
+                 this.dni = this.ValidarDni(this.Nacionalidad, value);
             }
         }
 
@@ -169,8 +160,10 @@ namespace EntidadesAbstractas
         {
             StringBuilder datos = new StringBuilder("");
 
-            datos.AppendFormat("NOMBRE COMPLETO: {0}, {1}\n",this.Apellido, this.Nombre);
-            datos.AppendFormat("NACIONALIDAD: {0}\n", this.Nacionalidad.ToString());
+            datos.AppendFormat("NOMBRE COMPLETO: {0}, {1}",this.Apellido, this.Nombre);
+            datos.AppendLine();
+            datos.AppendFormat("NACIONALIDAD: {0}", this.Nacionalidad.ToString());
+            datos.AppendLine();
 
             return datos.ToString();
         }
@@ -185,15 +178,15 @@ namespace EntidadesAbstractas
         {
             if(nacionalidad == ENacionalidad.Argentino && dato > 0 && dato < 89999999)
             {
-                return 1;
+                return dato;
             }
             else if(nacionalidad == ENacionalidad.Extranjero && dato > 90000000 && dato < 99999999)
             {
-                return 1;
+                return dato;
             }
             else
             {
-                throw new NacionalidadInvalidaException("La nacionalidad no se condice con el número de DNI");
+                throw new NacionalidadInvalidaException("La nacionalidad no se condice con el número.");
             }
         }
 
@@ -202,24 +195,24 @@ namespace EntidadesAbstractas
         /// </summary>
         /// <param name="nacionalidad">Nacionalidad para verificar el dni</param>
         /// <param name="dato">Número de dni</param>
-        /// <returns>Retorna 1 si es correcto el número respecto a la nacionalidad,
+        /// <returns>Retorna el dni en formato int si es correcto el número respecto a la nacionalidad,
         /// sino retorna 0 y una excepcion del tipo DniInvalidoException </returns>
-        private int ValidadDni(ENacionalidad nacionalidad, string dato)
+        private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {
-            try
+            if(!String.IsNullOrEmpty(dato) && dato.Length == 8)
             {
-                if(this.ValidarDni(nacionalidad, Convert.ToInt32(dato)) == 1)
+                try
                 {
-                    return 1;
+                    return this.ValidarDni(nacionalidad, Convert.ToInt32(dato));
                 }
-                else
+                catch(NacionalidadInvalidaException exception)
                 {
-                    return 0;
+                    throw exception;
                 }
             }
-            catch(NacionalidadInvalidaException exception)
+            else
             {
-                throw new DniInvalidoException("DNI invalido.", exception);
+                throw new DniInvalidoException("El dato ingresado no es un dni válido.");
             }
         }
 

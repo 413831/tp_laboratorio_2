@@ -45,7 +45,7 @@ namespace EntidadesAbstractas
         /// <returns>Retorna true si es de la clase Universitario sino retorna false</returns>
         public override bool Equals(object objeto)
         {
-            return (objeto is Universitario);
+            return objeto is Universitario;
         }
 
         /// <summary>
@@ -57,6 +57,7 @@ namespace EntidadesAbstractas
             StringBuilder datos = new StringBuilder("");
 
             datos.AppendFormat(base.ToString()); // Datos de Persona del objeto
+            datos.AppendLine();
             datos.AppendFormat("LEGAJO: {0}",this.legajo.ToString()); // Dato del legajo del objeto
 
             return datos.ToString();
@@ -87,8 +88,9 @@ namespace EntidadesAbstractas
         /// <returns>Retorna true si son iguales sino retorna false</returns>
         public static bool operator ==(Universitario universitarioUno, Universitario universitarioDos)
         {
-            if(universitarioUno.Equals(universitarioDos) && universitarioUno.legajo == universitarioDos.legajo
-                || universitarioUno.Dni == universitarioDos.Dni)
+            if((universitarioUno.legajo == universitarioDos.legajo)
+                || (universitarioUno.Dni == universitarioDos.Dni)
+                 &&  (universitarioDos.Equals(universitarioUno)))
             {
                 return true;
             }
