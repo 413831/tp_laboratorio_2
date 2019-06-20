@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Data.SqlClient;
 
 namespace Entidades
 {
-    public class Paquete
+    public class Paquete : IMostrar<Paquete>
     {
+        public delegate void DelegadoEstado(object paquete, EventArgs e);
+        public event DelegadoEstado InformaEstado;
+
         public enum EEstado
         {
             Ingresado,
@@ -64,19 +68,27 @@ namespace Entidades
 
         public void MockCicloDeVida()
         {
+            try
+            {
+                do
+                {
+                    this.Estado++; // REVISAR
+                    Thread.Sleep(1000); // CAMBIAR A 4000
+                    this.InformaEstado(this, null);
 
-            Thread.Sleep(4000);
-            this.Estado++; // REVISAR
-            this.InformaEstado(this, null);
+                } while (this.Estado != EEstado.Entregado);
 
+                PaqueteDAO.Insertar(this);
+            }
+            catch(SqlException exception) // Lanzo otra vez la exception
+            {
+                throw exception;
+            }
         }
-        /*
-         * 2. MostrarDatos utilizará string.Format con el siguiente formato "{0} para {1}", p.trackingID,
-            p.direccionEntrega para compilar la información del paquete.
-        */
+
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {
-            return String.Format("{0} para {1}", this.TrackingID, this.DireccionEntrega);
+            return String.Format("{0} para {1}\n", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega);
         }
 
         public static bool operator !=(Paquete paqueteUno, Paquete paqueteDos)
@@ -95,7 +107,8 @@ namespace Entidades
 
         public Paquete(string direccionEntrega, string trackingID)
         {
-
+            this.DireccionEntrega = direccionEntrega;
+            this.TrackingID = trackingID;
         }
 
         public override string ToString()
@@ -108,11 +121,6 @@ namespace Entidades
 
             return datos.ToString();
         }
-
-        public delegate void DelegadoEstado(object paquete, EventArgs e);
-        public event DelegadoEstado InformaEstado;
-
-
         #endregion
 
     }

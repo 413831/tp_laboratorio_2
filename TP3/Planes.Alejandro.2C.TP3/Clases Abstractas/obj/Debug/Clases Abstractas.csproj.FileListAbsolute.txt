@@ -1,0 +1,18 @@
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Clases Abstractas.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Clases Abstractas.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Excepciones.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Excepciones.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csprojAssemblyReference.cache
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csproj.CoreCompileInputs.cache
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csproj.CopyComplete
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Clases Abstractas.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Clases Abstractas.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Excepciones.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\bin\Debug\Excepciones.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csprojAssemblyReference.cache
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csproj.CoreCompileInputs.cache
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.csproj.CopyComplete
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Clases Abstractas\obj\Debug\Clases Abstractas.pdb

@@ -7,19 +7,44 @@ using System.Data.SqlClient;
 
 namespace Entidades
 {
-    static class PaqueteDAO
+    public static class PaqueteDAO
     {
         static SqlCommand comando;
         static SqlConnection conexion;
 
-        static bool Insertar(Paquete paquete)
+        public static bool Insertar(Paquete paquete)
         {
+            StringBuilder consulta = new StringBuilder("INSERT INTO Paquetes VALUES ");
+
+            consulta.AppendFormat("('{0}','{1}','{2}');", paquete.DireccionEntrega, paquete.TrackingID, "Alejandro Planes");
+
+            try
+            {
+                comando.CommandText = consulta.ToString();
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch(SqlException exception) // Lanzo la excepción
+            {
+                throw exception; 
+            }
+            finally
+            {
+                conexion.Close();
+            }
             return true;
         }
 
         static PaqueteDAO()
         {
+            string configuracionConexion  = @"Data Source= .\SQLEXPRESS;" +
+                " Initial Catalog = correo-sp-2017; Integrated Security = True";
+            conexion = new SqlConnection(configuracionConexion);
+            comando = new SqlCommand();
 
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.Connection = conexion;
+            
         }
     }
 }

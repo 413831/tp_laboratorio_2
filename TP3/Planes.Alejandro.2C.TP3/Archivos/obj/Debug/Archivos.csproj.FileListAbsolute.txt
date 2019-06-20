@@ -1,0 +1,14 @@
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Archivos\bin\Debug\Archivos.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Archivos\bin\Debug\Archivos.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.csproj.CoreCompileInputs.cache
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\bin\Debug\Archivos.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\bin\Debug\Archivos.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\bin\Debug\Excepciones.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\bin\Debug\Excepciones.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.csprojAssemblyReference.cache
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.csproj.CoreCompileInputs.cache
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.csproj.CopyComplete
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\Archivos\obj\Debug\Archivos.pdb

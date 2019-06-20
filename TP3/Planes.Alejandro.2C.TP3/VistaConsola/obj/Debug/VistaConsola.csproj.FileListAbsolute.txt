@@ -1,0 +1,32 @@
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\VistaConsola.exe.config
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\VistaConsola.exe
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\VistaConsola.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Archivos.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Abstractas.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Instanciables.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Excepciones.dll
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Archivos.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Abstractas.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Instanciables.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Excepciones.pdb
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.csprojAssemblyReference.cache
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.csproj.CoreCompileInputs.cache
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.csproj.CopyComplete
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.exe
+C:\Users\Aleksei\Desktop\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\VistaConsola.exe.config
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\VistaConsola.exe
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\VistaConsola.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Archivos.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Abstractas.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Instanciables.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Excepciones.dll
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Archivos.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Abstractas.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Clases Instanciables.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\bin\Debug\Excepciones.pdb
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.csprojAssemblyReference.cache
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.csproj.CoreCompileInputs.cache
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.csproj.CopyComplete
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.exe
+C:\workspace\tp_laboratorio_2\TP3\Planes.Alejandro.2C.TP3\VistaConsola\obj\Debug\VistaConsola.pdb
