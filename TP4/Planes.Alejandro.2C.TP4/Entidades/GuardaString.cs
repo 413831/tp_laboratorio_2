@@ -22,7 +22,7 @@ namespace Entidades
             try
             {
                 escritor = new StreamWriter(archivo,true);
-                escritor.Write(texto);
+                escritor.WriteLine(texto);
                 escritor.Close();
             }
             catch(IOException exception) // Lanzo exception a clase superior

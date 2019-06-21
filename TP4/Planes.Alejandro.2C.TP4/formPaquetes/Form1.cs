@@ -61,7 +61,7 @@ namespace formPaquetes
 
         private void ActualizarEstados()
         {
-            lstEstadoIngresado.Items.Clear();
+            lstEstadoIngresado.Items.Clear(); // Limpio listados
             lstEstadoEnViaje.Items.Clear();
             lstEstadoEntregado.Items.Clear();
 
@@ -71,7 +71,6 @@ namespace formPaquetes
                 {
                     case Paquete.EEstado.Ingresado :
                         lstEstadoIngresado.Items.Add(paquete);
-                        MessageBox.Show("ESTADO INGRESADO");
                         break;
                     case Paquete.EEstado.EnViaje :
                         lstEstadoEnViaje.Items.Add(paquete);
