@@ -32,16 +32,17 @@ namespace formPaquetes
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Paquete paquete = new Paquete(txtDireccion.Text, mtxtTrackingID.Text);
+            Paquete paquete = new Paquete(txtDireccion.Text, mtxtTrackingID.Text); // Se crea nuevo paquete con datos de las textBox
 
             try
             {
                 paquete.InformaEstado += this.paq_InformaEstado; // Asocio el método al manejador de eventos
-                this.correo += paquete;
+                this.correo += paquete; // Se agrega nuevo paquete al listado de paquetes del correo
+                this.ActualizarEstados();
             }
             catch(Exception exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message); // Se le muestra al usuario mensaje de la excepción
             }
         }
 
@@ -54,28 +55,28 @@ namespace formPaquetes
             }
             else
             {
-                this.ActualizarEstados();
+                this.ActualizarEstados(); // Se actualizan estados de las listas de estados
             }
         }
 
         private void ActualizarEstados()
         {
-            lstEstadoIngresado.Text = "";
-            lstEstadoEnViaje.Text = "";
-            lstEstadoEntregado.Text = "";
+            lstEstadoIngresado.Items.Clear();
+            lstEstadoEnViaje.Items.Clear();
+            lstEstadoEntregado.Items.Clear();
 
             foreach(Paquete paquete in this.correo.Paquetes)
             {
                 switch(paquete.Estado)
                 {
                     case Paquete.EEstado.Ingresado :
-                        lstEstadoIngresado.Text += paquete.ToString();
+                        lstEstadoIngresado.Items.Add(paquete);
                         break;
                     case Paquete.EEstado.EnViaje :
-                        lstEstadoEnViaje.Text += paquete.ToString();
+                        lstEstadoEnViaje.Items.Add(paquete);
                         break;
                     case Paquete.EEstado.Entregado :
-                        lstEstadoEntregado.Text += paquete.ToString();
+                        lstEstadoEntregado.Items.Add(paquete);
                         break;
                 }
             }
@@ -83,25 +84,27 @@ namespace formPaquetes
 
         private void MostrarInformacion<T>(IMostrar<T> elemento)
         {
+            // Se establece como ruta de archivo el escritorio
             string rutaArchivo = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\salida.txt";
 
-            if(!Object.Equals(elemento,null))
+            if(!Object.Equals(elemento,null)) // Verifico que el elemento no sea null
             {
                 this.rtbMostrar.Text = elemento.MostrarDatos(elemento); // REVISAR CON ToString()
 
                 try
                 {
-                    rtbMostrar.Text.Guardar(rutaArchivo);
+                    rtbMostrar.Text.Guardar(rutaArchivo); // Guardo los datos de la richTextBox en un archivo TXT
                 }
                 catch(Exception exception)
                 {
-                    MessageBox.Show(exception.Message);
+                    MessageBox.Show(exception.Message); // Muestro al usuario el mensaje de la excepción
                 }
             }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // Finalizo todos los hilos que esten vivos
             this.correo.FinEntregas();
         }
 

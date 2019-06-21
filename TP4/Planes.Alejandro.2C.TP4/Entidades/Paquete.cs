@@ -10,9 +10,12 @@ namespace Entidades
 {
     public class Paquete : IMostrar<Paquete>
     {
-        public delegate void DelegadoEstado(object paquete, EventArgs e);
+        public delegate void DelegadoEstado(object paquete, EventArgs e); 
         public event DelegadoEstado InformaEstado;
 
+        /// <summary>
+        /// Enumerado de estado del paquete
+        /// </summary>
         public enum EEstado
         {
             Ingresado,
@@ -26,6 +29,9 @@ namespace Entidades
 
         #region Propiedades
 
+        /// <summary>
+        /// Propiedad del atributo direccionEntrega
+        /// </summary>
         public string DireccionEntrega
         {
             get
@@ -38,6 +44,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad del atributo estado
+        /// </summary>
         public EEstado Estado
         {
             get
@@ -50,6 +59,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de atributo tracking ID
+        /// </summary>
         public string TrackingID
         {
             get
@@ -66,6 +78,20 @@ namespace Entidades
 
         #region Métodos
 
+        /// <summary>
+        /// Constructor público que setea los atributos direccionEntrega y trackingId
+        /// </summary>
+        /// <param name="direccionEntrega">Valor para atributo direccionEntrega</param>
+        /// <param name="trackingID">Valor para atributo trackingID</param>
+        public Paquete(string direccionEntrega, string trackingID)
+        {
+            this.DireccionEntrega = direccionEntrega;
+            this.TrackingID = trackingID;
+        }
+
+        /// <summary>
+        /// Método para simular el cambio de estado de un paquete
+        /// </summary>
         public void MockCicloDeVida()
         {
             try
@@ -73,7 +99,7 @@ namespace Entidades
                 do
                 {
                     this.Estado++; // REVISAR
-                    Thread.Sleep(1000); // CAMBIAR A 4000
+                    Thread.Sleep(4000); // CAMBIAR A 4000
                     this.InformaEstado(this, null);
 
                 } while (this.Estado != EEstado.Entregado);
@@ -86,16 +112,50 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Muestra los datos de un paquete
+        /// </summary>
+        /// <param name="elemento">Paquete para mostrar los datos</param>
+        /// <returns>Retorna un string con los datos del elemento</returns>
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {
             return String.Format("{0} para {1}\n", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega);
         }
+       
+        /// <summary>
+        /// Sobrecarga de método ToString() que retorna todos los datos de un objeto Paquete
+        /// </summary>
+        /// <returns>Se retorna un string con todos los datos del paquete</returns>
+        public override string ToString()
+        {
+            StringBuilder datos = new StringBuilder();
 
+            datos.AppendLine(this.MostrarDatos(this));
+
+            return datos.ToString();
+        }
+
+        #endregion
+
+        #region Operadores
+
+        /// <summary>
+        /// Sobrecarga del operador distinto que compara los tracking ID de dos paquetes
+        /// </summary>
+        /// <param name="paqueteUno">Primer paquete para comparar</param>
+        /// <param name="paqueteDos">Segundo paquete para comparar</param>
+        /// <returns>Retorna true si los paquetes son diferentes sino retorna false</returns>
         public static bool operator !=(Paquete paqueteUno, Paquete paqueteDos)
         {
             return !(paqueteUno == paqueteDos);
         }
 
+        /// <summary>
+        /// Sobrecarga del operador igual que compara los tracking ID de dos paquetes
+        /// </summary>
+        /// <param name="paqueteUno">Primer paquete para comparar</param>
+        /// <param name="paqueteDos">Segundo paquete para comparar</param>
+        /// <returns>Retorna true si los paquetes son iguales sino retorna false</returns>
         public static bool operator ==(Paquete paqueteUno, Paquete paqueteDos)
         {
             if(paqueteUno.TrackingID == paqueteDos.TrackingID)
@@ -105,22 +165,6 @@ namespace Entidades
             return false;
         }
 
-        public Paquete(string direccionEntrega, string trackingID)
-        {
-            this.DireccionEntrega = direccionEntrega;
-            this.TrackingID = trackingID;
-        }
-
-        public override string ToString()
-        {
-            StringBuilder datos = new StringBuilder();
-
-            datos.AppendLine(this.TrackingID);
-            datos.AppendLine(this.DireccionEntrega);
-            datos.AppendLine(this.Estado.ToString());
-
-            return datos.ToString();
-        }
         #endregion
 
     }

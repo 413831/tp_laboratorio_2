@@ -12,6 +12,9 @@ namespace Entidades
         private List<Thread> mockPaquetes;
         private List<Paquete> paquetes;
 
+        /// <summary>
+        /// Propiedad del atributo paquetes
+        /// </summary>
         public List<Paquete> Paquetes
         {
             get
@@ -26,12 +29,18 @@ namespace Entidades
 
         #region Métodos
 
+        /// <summary>
+        /// Constructor público que inicializa las listas
+        /// </summary>
         public Correo()
         {
             this.mockPaquetes = new List<Thread>();
             this.paquetes = new List<Paquete>();
         }
 
+        /// <summary>
+        /// Método que finaliza todos los hilos del listado de MockPaquetes
+        /// </summary>
         public void FinEntregas()
         {
             foreach(Thread hilo in this.mockPaquetes)
@@ -43,6 +52,11 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Método que muestra todos los datos de los paquetes del listado
+        /// </summary>
+        /// <param name="elementos">Es el listado de paquetes</param>
+        /// <returns>Retorna un string con todos los datos</returns>
         public string MostrarDatos(IMostrar<List<Paquete>> elementos)
         {
             string datos = "";
@@ -54,6 +68,12 @@ namespace Entidades
             return datos;
         }
 
+        /// <summary>
+        /// Sobrecarga de operador suma para agregar un paquete al listado del correo
+        /// </summary>
+        /// <param name="correo"></param>
+        /// <param name="paquete"></param>
+        /// <returns>Retorna el objeto correo</returns>
         public static Correo operator + (Correo correo, Paquete paquete)
         {
             Thread hiloMock;

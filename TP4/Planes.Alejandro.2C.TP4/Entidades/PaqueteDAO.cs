@@ -12,6 +12,11 @@ namespace Entidades
         static SqlCommand comando;
         static SqlConnection conexion;
 
+        /// <summary>
+        /// Se inserta los datos de un paquete a la base de datos
+        /// </summary>
+        /// <param name="paquete">Paquete para insertar los datos</param>
+        /// <returns>Retorna true siempre y cuando no lance una excepción</returns>
         public static bool Insertar(Paquete paquete)
         {
             StringBuilder consulta = new StringBuilder("INSERT INTO Paquetes VALUES ");
@@ -35,6 +40,9 @@ namespace Entidades
             return true;
         }
 
+        /// <summary>
+        /// Constructor estático que inicializa la conexión y el comando de Sql
+        /// </summary>
         static PaqueteDAO()
         {
             string configuracionConexion  = @"Data Source= .\SQLEXPRESS;" +
@@ -44,7 +52,6 @@ namespace Entidades
 
             comando.CommandType = System.Data.CommandType.Text;
             comando.Connection = conexion;
-            
         }
     }
 }

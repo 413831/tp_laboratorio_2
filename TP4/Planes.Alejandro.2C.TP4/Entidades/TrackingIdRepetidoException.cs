@@ -8,6 +8,10 @@ namespace Entidades
 {
     public class TrackingIdRepetidoException : Exception
     {
+        /// <summary>
+        /// Excepción que se lanza cuando hay un trackingID repetido
+        /// </summary>
+        /// <param name="mensaje">Mensaje de la excepción</param>
         public TrackingIdRepetidoException(string mensaje) : base(mensaje)
         {}
 
