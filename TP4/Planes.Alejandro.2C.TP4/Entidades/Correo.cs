@@ -63,7 +63,7 @@ namespace Entidades
 
             foreach(Paquete paquete in ((Correo)elementos).Paquetes)
             {
-                datos += String.Format("{0} para {1} ({2})", paquete.TrackingID, paquete.DireccionEntrega, paquete.Estado.ToString());
+                datos += String.Format("{0} para {1} ({2})\n", paquete.TrackingID, paquete.DireccionEntrega, paquete.Estado.ToString());
             }
             return datos;
         }
@@ -87,10 +87,11 @@ namespace Entidades
             }
 
             hiloMock = new Thread(paquete.MockCicloDeVida); // Creo el hilo del mock del paquete
-            hiloMock.Start(); // Inicio el hilo del mock del paquete
-
             correo.Paquetes.Add(paquete); // Agrego el paquete al listado de correo
             correo.mockPaquetes.Add(hiloMock); // Agrego el hilo del método del paquete
+
+            hiloMock.Start(); // Inicio el hilo del mock del paquete
+
             return correo;
         }
         #endregion

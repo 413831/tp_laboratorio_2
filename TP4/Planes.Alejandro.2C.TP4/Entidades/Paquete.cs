@@ -87,6 +87,7 @@ namespace Entidades
         {
             this.DireccionEntrega = direccionEntrega;
             this.TrackingID = trackingID;
+            this.Estado = Paquete.EEstado.Ingresado;
         }
 
         /// <summary>
@@ -98,8 +99,8 @@ namespace Entidades
             {
                 do
                 {
-                    this.Estado++; // REVISAR
-                    Thread.Sleep(4000); // CAMBIAR A 4000
+                    Thread.Sleep(4000); 
+                    this.Estado++; 
                     this.InformaEstado(this, null);
 
                 } while (this.Estado != EEstado.Entregado);
