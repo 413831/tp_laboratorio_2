@@ -46,7 +46,7 @@ namespace Entidades
         static PaqueteDAO()
         {
             string configuracionConexion  = @"Data Source= .\SQLEXPRESS;" +
-                " Initial Catalog = correo-sp-2017; Integrated Security = True";
+                " Initial Catalog = correo-sp-2018; Integrated Security = True";
             conexion = new SqlConnection(configuracionConexion);
             comando = new SqlCommand();
 

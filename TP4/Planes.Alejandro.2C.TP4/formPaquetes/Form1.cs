@@ -37,13 +37,26 @@ namespace formPaquetes
             try
             {
                 paquete.InformaEstado += this.paq_InformaEstado; // Asocio el método al manejador de eventos
+                paquete.InformaException += this.InformarExcepcion; // Asocio el método al manejador de eventos
                 this.correo += paquete; // Se agrega nuevo paquete al listado de paquetes del correo
                 this.ActualizarEstados();
             }
-            catch(Exception exception)
+            catch (TrackingIdRepetidoException exceptionTracking)
             {
-                MessageBox.Show(exception.Message); // Se le muestra al usuario mensaje de la excepción
+                MessageBox.Show(exceptionTracking.Message + "\nTracking ID:" + paquete.TrackingID, "ALERTA!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        /// <summary>
+        /// Manejador de eventos que controla las excepciones producidas por SQL
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void InformarExcepcion(object paquete, Exception exception) 
+        {
+            MessageBox.Show(String.Format("Se ha producido un error en la comunicacion con SQL {0}\nPaquete N°: {1}",exception.Message,((Paquete)paquete).TrackingID),
+                            "SQL ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void paq_InformaEstado(object sender, EventArgs e)

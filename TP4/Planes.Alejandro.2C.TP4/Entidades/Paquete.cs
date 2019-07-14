@@ -13,6 +13,9 @@ namespace Entidades
         public delegate void DelegadoEstado(object paquete, EventArgs e); 
         public event DelegadoEstado InformaEstado;
 
+        public delegate void DelegadoEstadoException(object paquete, Exception exception);
+        public event DelegadoEstadoException InformaException;
+
         /// <summary>
         /// Enumerado de estado del paquete
         /// </summary>
@@ -109,7 +112,7 @@ namespace Entidades
             }
             catch(SqlException exception) // Lanzo otra vez la exception
             {
-                throw exception;
+                this.InformaException(this, exception);
             }
         }
 
