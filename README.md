@@ -1,3 +1,3 @@
-# Trabajos prácticos para la materia laboratorio de computación II
+# Trabajos prácticos para laboratorio de computación II
 
 ## C# .NET OOP
